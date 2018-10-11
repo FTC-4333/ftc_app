@@ -23,7 +23,7 @@ public class test extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("READY TO RUN");    //
+     //   telemetry.addData("READY TO RUN");    //
     }
 
     /*
@@ -46,20 +46,14 @@ public class test extends OpMode{
     @Override
     public void loop()
     {
-        //your code here
+
+
+        //code starts here
         if (gamepad1.a)
         {
-            testMotorPower = 1
+            robot.testMotor.setPower(0.5);
         }
-
-
-
-
-        //establishes motor power variables
-        robot.testMotor.setPower(testMotorPower);
-
-
-
+        robot.testMotor.setPower(0);
 
 
 

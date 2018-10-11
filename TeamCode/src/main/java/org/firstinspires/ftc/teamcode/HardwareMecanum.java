@@ -8,10 +8,10 @@ public class HardwareMecanum
 {
 
     //establish hardware
-  public DcMotor frontRight = null;
-  public DcMotor frontLeft  = null;
-  public DcMotor rearRight  = null;
-  public DcMotor rearLeft   = null;
+  //public DcMotor frontRight = null;
+  //public DcMotor frontLeft  = null;
+  //public DcMotor rearRight  = null;
+ // public DcMotor rearLeft   = null;
   public DcMotor testMotor  = null;
 
     /* local OpMode members. */
@@ -31,17 +31,17 @@ public class HardwareMecanum
 
 
         // Define and Initialize Motors
-        frontRight = hwMap.dcMotor.get("front_right");
-        frontLeft  = hwMap.dcMotor.get("front_left");
-        rearRight  = hwMap.dcMotor.get("rear_right");
-        rearLeft   = hwMap.dcMotor.get("rear_left");
+       // frontRight = hwMap.dcMotor.get("front_right");
+       // frontLeft  = hwMap.dcMotor.get("front_left");
+     //   rearRight  = hwMap.dcMotor.get("rear_right");
+      //  rearLeft   = hwMap.dcMotor.get("rear_left");
         testMotor  = hwMap.dcMotor.get("test_motor");
 
         // Set all motors & servos to zero power
-        frontRight.setPower(0);
-        frontLeft.setPower(0) ;
-        rearRight.setPower(0) ;
-        rearLeft.setPower(0)  ;
+      //  frontRight.setPower(0);
+      //  frontLeft.setPower(0) ;
+      //  rearRight.setPower(0) ;
+     //   rearLeft.setPower(0)  ;
         testMotor.setPower(0) ;
 
 
