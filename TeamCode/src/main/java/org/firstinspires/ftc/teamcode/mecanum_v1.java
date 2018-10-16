@@ -13,8 +13,8 @@ Teams who use and reference this code are expected to understand code they use.
 If you use our code and see us at competition, come say hello!
 */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Mecanum Tele Op", group="TeleOp")
-public class mecanumcopypaste extends OpMode {
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Mecanum TeleOp", group="TeleOp")
+public class mecanum_v1 extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
