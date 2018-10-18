@@ -18,7 +18,7 @@ public class mecanum_v1 extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
-    private static final double SCALEDPOWER = 1; //Emphasis on current controller reading (vs current motor power) on the drive train
+    private static final double SCALEDPOWER = 0.5; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel;
     @Override
