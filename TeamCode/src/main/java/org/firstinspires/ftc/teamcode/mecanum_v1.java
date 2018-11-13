@@ -1,5 +1,8 @@
+/*
+ADB guide can be found at:
+https://ftcprogramming.wordpress.com/2015/11/30/building-ftc_app-wirelessly/
+*/
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -13,7 +16,7 @@ Teams who use and reference this code are expected to understand code they use.
 If you use our code and see us at competition, come say hello!
 */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Mecanum TeleOp", group="TeleOp")
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="mecanum_v1", group="TeleOp")
 public class mecanum_v1 extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
@@ -29,7 +32,7 @@ public class mecanum_v1 extends OpMode {
         rightBackWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT2NAME);
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
-        double volts = hardwareMap.voltageSensor.get("Motor Controller 1").getVoltage();
+        double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
     }
 
     @Override
