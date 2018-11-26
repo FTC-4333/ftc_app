@@ -48,10 +48,10 @@ public class mecanum_v1 extends OpMode {
     // x - side
     // c - rotation
     public static void arcadeMecanum(double y, double x, double c, DcMotor leftFront, DcMotor rightFront, DcMotor leftBack, DcMotor rightBack) {
-        double leftFrontVal = y + x + c;
-        double rightFrontVal = y - x - c;
-        double leftBackVal = y - x + c;
-        double rightBackVal = y + x - c;
+        double leftFrontVal = y + x + c;        /*r2*/
+        double rightFrontVal = y - x - c;       /*r1*/
+        double leftBackVal = y - x + c;         /*l2*/
+        double rightBackVal = y + x - c;        /*l1*/
 
         //Move range to between 0 and +1, if not already
         double[] wheelPowers = {rightFrontVal, leftFrontVal, leftBackVal, rightBackVal};
