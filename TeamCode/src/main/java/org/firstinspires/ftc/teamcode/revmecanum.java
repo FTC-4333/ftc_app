@@ -32,7 +32,7 @@ public class revmecanum extends OpMode {
         rightBackWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT2NAME);
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
-        double volts = hardwareMap.voltageSensor.get("REV Robotics USB Expansion Hub Portal").getVoltage();
+        double volts = hardwareMap.voltageSensor.get("Expansion Hub Portal 1").getVoltage();
     }
 
     @Override
