@@ -16,8 +16,8 @@ Teams who use and reference this code are expected to understand code they use.
 If you use our code and see us at competition, come say hello!
 */
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="mecanum_v1", group="TeleOp")
-public class mecanum_v1 extends OpMode {
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="revmecanum", group="TeleOp")
+public class revmecanum extends OpMode {
 
     private static final double TRIGGERTHRESHOLD = .2;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
@@ -32,7 +32,7 @@ public class mecanum_v1 extends OpMode {
         rightBackWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT2NAME);
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
-        double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
+        double volts = hardwareMap.voltageSensor.get("REV Robotics USB Expansion Hub Portal").getVoltage();
     }
 
     @Override
