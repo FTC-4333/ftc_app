@@ -9,12 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import java.util.Arrays;
 
-/*
-This code is written as an example only.
-Obviously, it was not tested on your team's robot.
-Teams who use and reference this code are expected to understand code they use.
-If you use our code and see us at competition, come say hello!
-*/
+
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="revmecanum", group="TeleOp")
 public class revmecanum extends OpMode {
@@ -51,19 +46,20 @@ public class revmecanum extends OpMode {
     // x - side
     // c - rotation
     public static void arcadeMecanum(double y, double x, double c, DcMotor leftFront, DcMotor rightFront, DcMotor leftBack, DcMotor rightBack) {
-        double leftFrontVal = y + x + c;        /*r2*/
+        //leftFront and rightBack are reversed
+        double leftFrontVal  = y + x + c;       /*r2*/
         double rightFrontVal = y - x - c;       /*r1*/
-        double leftBackVal = y - x + c;         /*l2*/
-        double rightBackVal = y + x - c;        /*l1*/
+        double leftBackVal   = y - x + c;       /*l2*/
+        double rightBackVal  = y + x - c;       /*l1*/
 
         //Move range to between 0 and +1, if not already
         double[] wheelPowers = {rightFrontVal, leftFrontVal, leftBackVal, rightBackVal};
         Arrays.sort(wheelPowers);
         if (wheelPowers[3] > 1) {
-            leftFrontVal /= wheelPowers[3];
+            leftFrontVal  /= wheelPowers[3];
             rightFrontVal /= wheelPowers[3];
-            leftBackVal /= wheelPowers[3];
-            rightBackVal /= wheelPowers[3];
+            leftBackVal   /= wheelPowers[3];
+            rightBackVal  /= wheelPowers[3];
         }
         double scaledPower = SCALEDPOWER;
 
