@@ -13,4 +13,6 @@ public class UniversalConstants {
     static final String RIGHT1NAME = "r1";
     static final String RIGHT2NAME = "r2";
 
+
+
 }

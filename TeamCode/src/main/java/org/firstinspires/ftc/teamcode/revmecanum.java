@@ -6,6 +6,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import java.util.Arrays;
 
@@ -19,6 +20,7 @@ public class revmecanum extends OpMode {
     private static final double SCALEDPOWER = 0.5; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel;
+    private static Servo leftzucc, rightzucc;
     @Override
     public void init() {
         leftFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME);
@@ -39,6 +41,12 @@ public class revmecanum extends OpMode {
         double inputX = Math.abs(gamepad1.left_stick_x) > ACCEPTINPUTTHRESHOLD ? -gamepad1.left_stick_x : 0;
         double inputC = Math.abs(gamepad1.right_stick_x)> ACCEPTINPUTTHRESHOLD ? -gamepad1.right_stick_x: 0;
 
+        boolean input0 = (gamepad2.a);
+        boolean inputIntake1 = (gamepad2.a);
+
+        boolean inputOut2 = (gamepad2.b);
+        boolean inputOut3 = (gamepad2.b);
+
         arcadeMecanum(inputY, inputX, inputC, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }
 
@@ -52,6 +60,11 @@ public class revmecanum extends OpMode {
         double leftBackVal   = y - x + c;       /*l2*/
         double rightBackVal  = y + x - c;       /*l1*/
 
+        double leftZuccVal  = 0;
+        double rightZuccVal = 0;
+
+        
+
         //Move range to between 0 and +1, if not already
         double[] wheelPowers = {rightFrontVal, leftFrontVal, leftBackVal, rightBackVal};
         Arrays.sort(wheelPowers);
@@ -62,6 +75,7 @@ public class revmecanum extends OpMode {
             rightBackVal  /= wheelPowers[3];
         }
         double scaledPower = SCALEDPOWER;
+
 
         leftFront.setPower(leftFrontVal*scaledPower+leftFront.getPower()*(1-scaledPower));
         rightFront.setPower(rightFrontVal*scaledPower+rightFront.getPower()*(1-scaledPower));
