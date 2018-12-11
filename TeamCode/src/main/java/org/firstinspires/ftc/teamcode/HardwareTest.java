@@ -2,24 +2,25 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class HardwareMecanum
+public class HardwareTest
 {
 
     //establish hardware
-  //public DcMotor frontRight = null;
-  //public DcMotor frontLeft  = null;
-  //public DcMotor rearRight  = null;
- // public DcMotor rearLeft   = null;
   public DcMotor testMotor  = null;
+  public Servo testServo = null;
+
+    //servos
+    public static final double MID_SERVO  = 0.5;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public HardwareMecanum()
+    public HardwareTest()
     {
     }
 
@@ -31,17 +32,9 @@ public class HardwareMecanum
 
 
         // Define and Initialize Motors
-       // frontRight = hwMap.dcMotor.get("front_right");
-       // frontLeft  = hwMap.dcMotor.get("front_left");
-     //   rearRight  = hwMap.dcMotor.get("rear_right");
-      //  rearLeft   = hwMap.dcMotor.get("rear_left");
         testMotor  = hwMap.dcMotor.get("test_motor");
 
         // Set all motors & servos to zero power
-      //  frontRight.setPower(0);
-      //  frontLeft.setPower(0) ;
-      //  rearRight.setPower(0) ;
-     //   rearLeft.setPower(0)  ;
         testMotor.setPower(0) ;
 
 

@@ -1,13 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode  ;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp  ;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name="4333 test", group="test")
+@TeleOp(name="4333 test2", group="test")
 
-public class test extends OpMode{
+public class test2 extends OpMode{
+    public Servo = null;
 
     /* Declare OpMode members. */
     HardwareTest robot = new HardwareTest();
