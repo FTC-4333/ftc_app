@@ -9,6 +9,10 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name="4333 test2", group="test")
 
 public class test2 extends OpMode{
+<<<<<<< HEAD
+=======
+    public Servo = null;
+>>>>>>> 313fc26fcccf267500a6a420203984848a993ef7
 
     /* Declare OpMode members. */
     HardwareTest robot = new HardwareTest();

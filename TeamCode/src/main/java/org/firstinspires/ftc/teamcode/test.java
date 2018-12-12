@@ -2,15 +2,25 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode  ;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp  ;
+import com.qualcomm.robotcore.util.Range;
 
 
-
-@TeleOp(name="4333 test", group="Mecanum")
+@TeleOp(name="4333 test", group="test")
 
 public class test extends OpMode{
 
     /* Declare OpMode members. */
-    HardwareMecanum robot = new HardwareMecanum();
+    HardwareTest robot = new HardwareTest();
+
+    double          clawOffset  = 0.0 ;                  // Servo mid position
+    final double    CLAW_SPEED  = 0.04 ;
+
+    double leftendTime = 0;
+    double rightendTime = 0;
+    double endTime180 = 0;
+    boolean turnRight = false;
+    boolean turnLeft = false;
+    boolean turn180 = false;
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -55,6 +65,13 @@ public class test extends OpMode{
         }
         robot.testMotor.setPower(0);
 
+        if (gamepad1.x)
+            clawOffset += CLAW_SPEED;
+        else if (gamepad2.left_bumper)
+            clawOffset -= CLAW_SPEED;
+
+        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+        robot.testServo.setPosition(robot.MID_SERVO + clawOffset);
 
 
 
