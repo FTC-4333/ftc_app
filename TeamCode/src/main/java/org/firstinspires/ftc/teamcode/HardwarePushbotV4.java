@@ -19,6 +19,7 @@ public class HardwarePushbotV4 {
 
     public Servo leftClaw  = null;
     public Servo rightClaw = null;
+    public Servo servotest = null;
 
     public DcMotor rightArmMotor = null;
     public DcMotor  leftArmMotor = null;
@@ -58,6 +59,10 @@ public class HardwarePushbotV4 {
         rightClaw.setPosition(MID_SERVO);
         leftClaw = hwMap.servo.get("left_claw");
         leftClaw.setPosition(MID_SERVO);
+
+        //test servo
+        servotest = hwMap.servo.get("servo_test");
+        servotest.setPosition(MID_SERVO);
 
 
 

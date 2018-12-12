@@ -20,7 +20,7 @@ public class revmecanum extends OpMode {
     private static final double SCALEDPOWER = 0.5; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel;
-    private static Servo leftzucc, rightzucc;
+    private static Servo testServo;
     @Override
     public void init() {
         leftFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME);
@@ -32,6 +32,8 @@ public class revmecanum extends OpMode {
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         //rightFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
 
+        testServo= hardwareMap.servo.get(UniversalConstants.TESTSERVO);
+
         double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
     }
 
@@ -41,11 +43,7 @@ public class revmecanum extends OpMode {
         double inputX = Math.abs(gamepad1.left_stick_x) > ACCEPTINPUTTHRESHOLD ? -gamepad1.left_stick_x : 0;
         double inputC = Math.abs(gamepad1.right_stick_x)> ACCEPTINPUTTHRESHOLD ? -gamepad1.right_stick_x: 0;
 
-        boolean input0 = (gamepad2.a);
-        boolean inputIntake1 = (gamepad2.a);
 
-        boolean inputOut2 = (gamepad2.b);
-        boolean inputOut3 = (gamepad2.b);
 
         arcadeMecanum(inputY, inputX, inputC, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }
@@ -61,9 +59,8 @@ public class revmecanum extends OpMode {
         double rightBackVal  = y + x - c;       /*l1*/
 
         double leftZuccVal  = 0;
-        double rightZuccVal = 0;
 
-        
+
 
         //Move range to between 0 and +1, if not already
         double[] wheelPowers = {rightFrontVal, leftFrontVal, leftBackVal, rightBackVal};
@@ -81,5 +78,6 @@ public class revmecanum extends OpMode {
         rightFront.setPower(rightFrontVal*scaledPower+rightFront.getPower()*(1-scaledPower));
         leftBack.setPower(leftBackVal*scaledPower+leftBack.getPower()*(1-scaledPower));
         rightBack.setPower(rightBackVal*scaledPower+rightBack.getPower()*(1-scaledPower));
+
     }
 }

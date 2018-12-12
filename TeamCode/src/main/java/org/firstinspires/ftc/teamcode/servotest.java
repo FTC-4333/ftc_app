@@ -2,24 +2,19 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
+@TeleOp(name="4333 servotest", group="Pushbot")
 
-@TeleOp(name="4333 test2", group="test")
-
-public class test2 extends OpMode{
-<<<<<<< HEAD
-=======
-    public Servo = null;
->>>>>>> 313fc26fcccf267500a6a420203984848a993ef7
+public class servotest extends OpMode{
 
     /* Declare OpMode members. */
-    HardwareTest robot = new HardwareTest();
+    HardwarePushbotV4 robot       = new HardwarePushbotV4(); // use the class created to define a Pushbot's hardware
 
     double          clawOffset  = 0.0 ;                  // Servo mid position
     final double    CLAW_SPEED  = 0.04 ;
-
+    //double endTime = 0;
     double leftendTime = 0;
     double rightendTime = 0;
     double endTime180 = 0;
@@ -27,6 +22,9 @@ public class test2 extends OpMode{
     boolean turnLeft = false;
     boolean turn180 = false;
 
+    private ElapsedTime runtime = new ElapsedTime();
+
+    // sets rate to move servo
     /*
      * Code to run ONCE when the driver hits INIT
      */
@@ -38,7 +36,7 @@ public class test2 extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-     //   telemetry.addData("READY TO RUN");    //
+        telemetry.addData("Say", "Hello Driver");    //
     }
 
     /*
@@ -48,6 +46,7 @@ public class test2 extends OpMode{
     public void init_loop()
     {
     }
+
     /*
      * Code to run ONCE when the driver hits PLAY
      */
@@ -55,62 +54,33 @@ public class test2 extends OpMode{
     public void start()
     {
     }
+
     /*
      * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
      */
     @Override
-    public void loop()
-    {
-
-
-        //code starts here
+    public void loop() {
+        //variables
+        //claws
+        //open & close claws
         if (gamepad1.a)
-        {
-            robot.testMotor.setPower(0.5);
-        }
-        robot.testMotor.setPower(0);
-
-        if (gamepad1.x)
             clawOffset += CLAW_SPEED;
-        else if (gamepad2.left_bumper)
+        else if (gamepad1.b)
             clawOffset -= CLAW_SPEED;
 
         clawOffset = Range.clip(clawOffset, -0.5, 0.5);
-        robot.testServo.setPosition(robot.MID_SERVO + clawOffset);
+        robot.servotest.setPosition(robot.MID_SERVO + clawOffset);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        /*
+        telemetry.addData("Blue", robot.colorSensor.blue() );
+        telemetry.addData("Red", robot.colorSensor.red() );
+        */
     }
+
     @Override
-    public void stop()
-    {
+    public void stop() {
     }
 
 }
