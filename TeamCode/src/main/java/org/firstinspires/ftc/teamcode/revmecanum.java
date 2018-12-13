@@ -20,7 +20,7 @@ public class revmecanum extends OpMode {
     private static final double SCALEDPOWER = 0.5; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel;
-    private static Servo testServo;
+    private static Servo servo;
     @Override
     public void init() {
         leftFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME);
@@ -32,7 +32,7 @@ public class revmecanum extends OpMode {
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         //rightFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        testServo= hardwareMap.servo.get(UniversalConstants.TESTSERVO);
+        servo = hardwareMap.servo.get(UniversalConstants.TESTSERVO);
 
         double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
     }
