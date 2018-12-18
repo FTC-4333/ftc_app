@@ -12,7 +12,6 @@ import java.util.Arrays;
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="rover_v1", group="TeleOp")
 public class rover_v1 extends OpMode
 {
-
     private static final double TRIGGERTHRESHOLD = .2     ;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
     private static final double SCALEDPOWER = 0.5; //Emphasis on current controller reading (vs current motor power) on the drive train
@@ -23,13 +22,13 @@ public class rover_v1 extends OpMode
     @Override
     public void init()
     {
-
         leftFrontWheel  = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME) ;
         leftBackWheel   = hardwareMap.dcMotor.get(UniversalConstants.LEFT2NAME) ;
         rightFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT1NAME);
         rightBackWheel  = hardwareMap.dcMotor.get(UniversalConstants.RIGHT2NAME);
-        leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
-        rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
+
+        leftCollector   = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
+        rightCollector  = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
 
         //reverse all but rightFrontWheel, because of the way that the REV motors are oriented
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -43,6 +42,12 @@ public class rover_v1 extends OpMode
     @Override
 
     public void loop()
+
+    {
+        leftCollector.setPosition(Math.abs(gamepad1.left_stick_y));
+        rightCollector.setPosition(Math.abs(gamepad1.left_stick_y));
+    }
+
     {
         double inputY = Math.abs(gamepad1.left_stick_y) > ACCEPTINPUTTHRESHOLD ? gamepad1.left_stick_y : 0 ;
         double inputX = Math.abs(gamepad1.left_stick_x) > ACCEPTINPUTTHRESHOLD ? -gamepad1.left_stick_x : 0;
@@ -52,7 +57,6 @@ public class rover_v1 extends OpMode
         double inputR = (gamepad2.right_trigger);
 
         arcadeMecanum(inputY, inputX, inputC, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
-      //  collector(inputL, inputR, leftCollector, rightCollector);
     }
 
     // y - forwards
@@ -83,8 +87,5 @@ public class rover_v1 extends OpMode
         rightFront.setPower(rightFrontVal*scaledPower+rightFront.getPower()*(1-scaledPower)) ;
         leftBack.setPower(leftBackVal*scaledPower+leftBack.getPower()*(1-scaledPower))       ;
         rightBack.setPower(rightBackVal*scaledPower+rightBack.getPower()*(1-scaledPower))    ;
-
     }
-
-   // public static void collector(double l, double r, leftCollector, rightCollector);
 }
