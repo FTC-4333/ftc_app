@@ -36,7 +36,6 @@ public class rover_v1 extends OpMode
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         //rightFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
 
-
         double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
     }
 
