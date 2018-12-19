@@ -36,6 +36,7 @@ public class rover_v1 extends OpMode
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         //rightFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
 
+
         double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
     }
 
@@ -44,17 +45,12 @@ public class rover_v1 extends OpMode
     public void loop()
 
     {
-        leftCollector.setPosition(Math.abs(gamepad1.left_stick_y));
-        rightCollector.setPosition(Math.abs(gamepad1.left_stick_y));
-    }
+        leftCollector.setPosition(gamepad2.left_stick_y);
+        rightCollector.setPosition(-gamepad2.left_stick_y);
 
-    {
         double inputY = Math.abs(gamepad1.left_stick_y) > ACCEPTINPUTTHRESHOLD ? gamepad1.left_stick_y : 0 ;
         double inputX = Math.abs(gamepad1.left_stick_x) > ACCEPTINPUTTHRESHOLD ? -gamepad1.left_stick_x : 0;
         double inputC = Math.abs(gamepad1.right_stick_x)> ACCEPTINPUTTHRESHOLD ? -gamepad1.right_stick_x: 0;
-
-        double inputL = (gamepad2.right_trigger);
-        double inputR = (gamepad2.right_trigger);
 
         arcadeMecanum(inputY, inputX, inputC, leftFrontWheel, rightFrontWheel, leftBackWheel, rightBackWheel);
     }
