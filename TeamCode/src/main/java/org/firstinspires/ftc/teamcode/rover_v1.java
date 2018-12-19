@@ -30,7 +30,7 @@ public class rover_v1 extends OpMode
 
         arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
         arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
-        lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+        //lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
 
         leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
         rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -58,14 +58,14 @@ public class rover_v1 extends OpMode
         }
         else if (gamepad2.b)
         {
-            rightCollector.setPosition(-1);
-            leftCollector.setPosition(1);
+            leftCollector.setPosition(-1);
+            rightCollector.setPosition(1);
         }
 
         else
             {
-                rightCollector.setPosition(0);
-                leftCollector.setPosition(0);
+                leftCollector.setPosition(0.5);
+                rightCollector.setPosition(0.5);
             }
 
         //control arm using left and right stick y values
