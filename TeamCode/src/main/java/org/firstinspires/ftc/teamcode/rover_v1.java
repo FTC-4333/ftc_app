@@ -51,19 +51,23 @@ public class rover_v1 extends OpMode
     {
         //use A button and B button to control the intake servos
         //A sucks, B spits
+        //servos accept values from 0 to 1, 0.5 makes the servo "stop"
         if (gamepad2.a)
         {
+            //this makes the intake servos "suck" when a button is presses
             leftCollector.setPosition(1);
             rightCollector.setPosition(-1);
         }
         else if (gamepad2.b)
         {
+            //this makes the intake servos "spit" when b button is pressed
             leftCollector.setPosition(-1);
             rightCollector.setPosition(1);
         }
 
         else
             {
+                //this "stops" the servos, but they actually drift a bit
                 leftCollector.setPosition(0.5);
                 rightCollector.setPosition(0.5);
             }
