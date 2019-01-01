@@ -2,12 +2,15 @@
 ADB guide can be found at:
 https://ftcprogramming.wordpress.com/2015/11/30/building-ftc_app-wirelessly/
 */
-package org.firstinspires.ftc.teamcode                ;
+
+package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode ;
-import com.qualcomm.robotcore.hardware.DcMotor        ;
-import com.qualcomm.robotcore.hardware.DcMotorSimple  ;
-import com.qualcomm.robotcore.hardware.Servo          ;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import java.util.Arrays;
 
 @Autonomous(name="autorover_v1", group="Autonomous")
@@ -20,6 +23,8 @@ public class autorover_v1 extends OpMode
     public void init()
     //this is where the code for init-ing and reversing goes
     {
+        ElapsedTime runtime = new ElapsedTime();
+
         leftFrontWheel  = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME) ;
         leftBackWheel   = hardwareMap.dcMotor.get(UniversalConstants.LEFT2NAME) ;
         rightFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT1NAME);
@@ -27,7 +32,7 @@ public class autorover_v1 extends OpMode
 
         arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
         arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
-        //lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+        lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
 
         leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
         rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -46,6 +51,12 @@ public class autorover_v1 extends OpMode
     public void loop()
     //this is where the code for moving things goes
     {
+        runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() < 2))
+        {
+            lifter.setPower(1);
+        }
+        lifter.setPower(0);
 
 
 

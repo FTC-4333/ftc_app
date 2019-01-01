@@ -30,7 +30,7 @@ public class rover_v2 extends OpMode
 
         arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
         arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
-        //lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+        lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
 
         leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
         rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -70,6 +70,11 @@ public class rover_v2 extends OpMode
             //this "stops" the servos, but they actually drift a bit
             leftCollector.setPosition(0.5);
             rightCollector.setPosition(0.5);
+        }
+
+        if (gamepad2.y)
+        {
+            lifter.setPower(1);
         }
 
         //control arm using left and right stick y values
