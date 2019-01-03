@@ -16,7 +16,7 @@ public class rover_v2 extends OpMode
     private static final double ACCEPTINPUTTHRESHOLD = .15;
     private static final double SCALEDPOWER = 1; //Emphasis on current controller reading (vs current motor power) on the drive train
 
-    private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel, arm0, arm1, lifter;
+    private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel, arm0, arm1, l;
     private static Servo leftCollector, rightCollector;
 
     @Override
@@ -28,12 +28,12 @@ public class rover_v2 extends OpMode
         rightFrontWheel = hardwareMap.dcMotor.get(UniversalConstants.RIGHT1NAME);
         rightBackWheel  = hardwareMap.dcMotor.get(UniversalConstants.RIGHT2NAME);
 
-        arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
-        arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
-        lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+       // arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
+       // arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
+        l = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
 
-        leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
-        rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
+       // leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
+       // rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
 
         //reverse all but rightFrontWheel, because of the way that the REV motors are oriented
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -41,7 +41,7 @@ public class rover_v2 extends OpMode
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         //rightFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        double volts = hardwareMap.voltageSensor.get("Expansion Hub 2").getVoltage();
+        double volts = hardwareMap.voltageSensor.get("Expansion Hub 1").getVoltage();
     }
 
     @Override
@@ -52,7 +52,7 @@ public class rover_v2 extends OpMode
         //use A button and B button to control the intake servos
         //A sucks, B spits
         //servos accept values from 0 to 1, 0.5 makes the servo "stop"
-        if (gamepad2.a)
+        /*if (gamepad2.a)
         {
             //this makes the intake servos "suck" when a button is presses
             leftCollector.setPosition(1);
@@ -71,17 +71,29 @@ public class rover_v2 extends OpMode
             leftCollector.setPosition(0.5);
             rightCollector.setPosition(0.5);
         }
-
-        if (gamepad2.y)
+        */
+        if (gamepad1.y)
         {
-            lifter.setPower(1);
+            l.setPower(-1);
         }
+
+
+        if (gamepad1.a)
+        {
+            l.setPower(1);
+        }
+
+        if (gamepad1.b)
+        {
+            l.setPower(0);
+        }
+
 
         //control arm using left and right stick y values
         //left stick controls arm0, the "shoulder" or bottom part
         //right stick controls arm1, the "forearm" or top part
-        arm0.setPower(gamepad2.left_stick_y);
-        arm1.setPower(gamepad2.right_stick_y);
+       // arm0.setPower(gamepad2.left_stick_y);
+       // arm1.setPower(gamepad2.right_stick_y);
 
         //moves mecanum wheel motors based on absolute values from the sticks that take into account rotation
         //strafing works

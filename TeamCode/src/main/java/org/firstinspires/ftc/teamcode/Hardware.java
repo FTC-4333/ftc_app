@@ -57,10 +57,10 @@ public class Hardware
     public DcMotor  leftBackWheel     = null;
     public DcMotor  rightFrontWheel   = null;
     public DcMotor  rightBackWheel  = null;
-    public DcMotor  lifter          = null;
+    public DcMotor  l          = null;
 
-    public Servo leftCollector = null;
-    public Servo rightCollector = null;
+  //  public Servo leftCollector = null;
+  //  public Servo rightCollector = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -81,7 +81,7 @@ public class Hardware
         leftBackWheel       = hwMap.get(DcMotor.class, "l2");
         rightFrontWheel     = hwMap.get(DcMotor.class, "r1");
         rightBackWheel      = hwMap.get(DcMotor.class, "r2");
-        lifter              = hwMap.get(DcMotor.class, "lifter");
+        l              = hwMap.get(DcMotor.class, "l");
 
         leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotor.Direction.REVERSE);
@@ -92,7 +92,7 @@ public class Hardware
         leftBackWheel.setPower(0);
         rightFrontWheel.setPower(0);
         rightBackWheel.setPower(0);
-        lifter.setPower(0);
+        l.setPower(0);
 
                 // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
@@ -100,12 +100,12 @@ public class Hardware
         leftBackWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFrontWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBackWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        lifter.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        l.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         // Define and initialize ALL installed servos.
-        leftCollector  = hwMap.get(Servo.class, "lc");
-        rightCollector = hwMap.get(Servo.class, "rc");
+     //   leftCollector  = hwMap.get(Servo.class, "lc");
+     //   rightCollector = hwMap.get(Servo.class, "rc");
     }
 }
 

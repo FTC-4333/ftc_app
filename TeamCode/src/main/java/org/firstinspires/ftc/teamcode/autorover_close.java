@@ -63,13 +63,14 @@ public class autorover_close extends LinearOpMode
 
         //Step 1: Lower lifter
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 5.0))
+        while (opModeIsActive() && (runtime.seconds() < 3.0))
         {
-            robot.lifter.setPower(FORWARD);
+            robot.l.setPower(-1);
         }
-        robot.lifter.setPower(0);
+        robot.l.setPower(0);
 
         //drive forwards into crater
+        /*
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0))
         {
@@ -82,6 +83,7 @@ public class autorover_close extends LinearOpMode
         robot.leftBackWheel.setPower(0);
         robot.rightFrontWheel.setPower(0);
         robot.rightBackWheel.setPower(0);
+        */
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

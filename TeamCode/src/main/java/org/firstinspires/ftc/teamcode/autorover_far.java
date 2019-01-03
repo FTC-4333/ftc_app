@@ -65,9 +65,9 @@ public class autorover_far extends LinearOpMode
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 5.0))
         {
-            robot.lifter.setPower(FORWARD);
+            robot.l.setPower(FORWARD);
         }
-        robot.lifter.setPower(0);
+        robot.l.setPower(0);
 
         //drive forwards slightly
         runtime.reset();
