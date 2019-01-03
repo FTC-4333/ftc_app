@@ -33,15 +33,16 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="autorover_", group="Autonomous")
-public class autorover_v0 extends LinearOpMode
+@Autonomous(name="autorover_close", group="Autonomous")
+public class autorover_close extends LinearOpMode
 {
 
     /* Declare OpMode members. */
     Hardware         robot   = new Hardware();
     private ElapsedTime     runtime = new ElapsedTime();
 
-    static final double     FORWARD_SPEED = 0.5;
+    static final double     FORWARD = 0.5;
+    static final double     REVERSE = -0.5;
 
     @Override
     public void runOpMode()
@@ -64,7 +65,7 @@ public class autorover_v0 extends LinearOpMode
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 5.0))
         {
-            robot.lifter.setPower(FORWARD_SPEED);
+            robot.lifter.setPower(FORWARD);
         }
         robot.lifter.setPower(0);
 
@@ -72,10 +73,10 @@ public class autorover_v0 extends LinearOpMode
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0))
         {
-            robot.leftFrontWheel.setPower(FORWARD_SPEED);
-            robot.leftBackWheel.setPower(FORWARD_SPEED);
-            robot.rightFrontWheel.setPower(FORWARD_SPEED);
-            robot.rightBackWheel.setPower(FORWARD_SPEED);
+            robot.leftFrontWheel.setPower(FORWARD);
+            robot.leftBackWheel.setPower(FORWARD);
+            robot.rightFrontWheel.setPower(FORWARD);
+            robot.rightBackWheel.setPower(FORWARD);
         }
         robot.leftFrontWheel.setPower(0);
         robot.leftBackWheel.setPower(0);
