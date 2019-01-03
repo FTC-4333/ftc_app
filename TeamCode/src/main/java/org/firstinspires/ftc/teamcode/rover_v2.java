@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple  ;
 import com.qualcomm.robotcore.hardware.Servo          ;
 import java.util.Arrays;
 
-@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="rover_v1", group="TeleOp")
-public class rover_v1 extends OpMode
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="rover_v2", group="TeleOp")
+public class rover_v2 extends OpMode
 {
     private static final double TRIGGERTHRESHOLD = .2     ;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
@@ -21,7 +21,7 @@ public class rover_v1 extends OpMode
 
     @Override
     public void init()
-    //this is where the code for init-ing and reversing goes
+    //this is where the lines for init-ing and reversing goes
     {
         leftFrontWheel  = hardwareMap.dcMotor.get(UniversalConstants.LEFT1NAME) ;
         leftBackWheel   = hardwareMap.dcMotor.get(UniversalConstants.LEFT2NAME) ;
@@ -30,7 +30,7 @@ public class rover_v1 extends OpMode
 
         arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
         arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
-        //lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+        lifter = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
 
         leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
         rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -66,11 +66,16 @@ public class rover_v1 extends OpMode
         }
 
         else
-            {
-                //this "stops" the servos, but they actually drift a bit
-                leftCollector.setPosition(0.5);
-                rightCollector.setPosition(0.5);
-            }
+        {
+            //this "stops" the servos, but they actually drift a bit
+            leftCollector.setPosition(0.5);
+            rightCollector.setPosition(0.5);
+        }
+
+        if (gamepad2.y)
+        {
+            lifter.setPower(1);
+        }
 
         //control arm using left and right stick y values
         //left stick controls arm0, the "shoulder" or bottom part
