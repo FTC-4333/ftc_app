@@ -63,9 +63,9 @@ public class autorover_close extends LinearOpMode
 
         //Step 1: Lower lifter
         runtime.reset();
-        while (opModeIsActive() && (runtime.seconds() < 3.0))
+        while (opModeIsActive() && (runtime.seconds() < 5.5))
         {
-            robot.l.setPower(-1);
+            robot.l.setPower(-0.7);
         }
         robot.l.setPower(0);
 
