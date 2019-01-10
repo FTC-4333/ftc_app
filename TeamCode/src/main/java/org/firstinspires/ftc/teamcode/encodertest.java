@@ -85,10 +85,10 @@ public class encodertest extends LinearOpMode {
         if (opModeIsActive()) {
 
             // Determine new target position, and pass to motor controller
-            newLeftFrontTarget = robot.leftFrontWheel.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-            newLeftTarget = robot.leftBackWheel.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-            newLeftTarget = robot.rightFrontWheel.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-            newLeftTarget = robot.rightBackWheel.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
+            newLeftFrontTarget = robot.leftFrontWheel.getCurrentPosition() + (int)(leftFrontInches * COUNTS_PER_INCH);
+            newLeftBackTarget = robot.leftBackWheel.getCurrentPosition() + (int)(leftBackInches * COUNTS_PER_INCH);
+            newRightFrontTarget = robot.rightFrontWheel.getCurrentPosition() + (int)(rightFrontInches * COUNTS_PER_INCH);
+            newRightBackTarget = robot.rightBackWheel.getCurrentPosition() + (int)(rightBackInches * COUNTS_PER_INCH);
 
             robot.leftFrontWheel.setTargetPosition(newLeftFrontTarget);
             robot.leftFrontWheel.setTargetPosition(newRightTarget);
