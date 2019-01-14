@@ -14,4 +14,5 @@ public class UniversalConstants
    // static final String ARM0           = "a0";
    // static final String ARM1           = "a1";
     static final String LIFTER         = "l";
+    static final String COLORSENSOR = "c";
 }

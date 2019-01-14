@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotor        ;
 import com.qualcomm.robotcore.hardware.DcMotorSimple  ;
 import com.qualcomm.robotcore.hardware.Servo          ;
 import java.util.Arrays;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="rover_v2", group="TeleOp")
 public class rover_v2 extends OpMode
@@ -31,6 +33,7 @@ public class rover_v2 extends OpMode
        // arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
        // arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
         l = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
+        c = hardwareMap.colorSensor.get(UniversalConstants.COLORSENSOR);
 
        // leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
        // rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -87,6 +90,10 @@ public class rover_v2 extends OpMode
         {
             l.setPower(0);
         }
+
+        telemetry.addData("Red",  colorSensor.red() );
+        telemetry.addData("Blue", colorSensor.blue() );
+        telemetry.addData("Blue", colorSensor.green() );
 
 
         //control arm using left and right stick y values
