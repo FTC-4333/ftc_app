@@ -33,6 +33,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+
 
 /**
  * This is NOT an opmode.
@@ -52,14 +54,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 public class Hardware
 {
-    /* Public OpMode members. */
+    public ColorSensor colorSensor  = null;
+
     public DcMotor  leftFrontWheel    = null;
     public DcMotor  leftBackWheel     = null;
     public DcMotor  rightFrontWheel   = null;
     public DcMotor  rightBackWheel  = null;
     public DcMotor  l          = null;
-
-
 
   //  public Servo leftCollector = null;
   //  public Servo rightCollector = null;
@@ -85,6 +86,9 @@ public class Hardware
         rightBackWheel      = hwMap.get(DcMotor.class, "r2");
         l              = hwMap.get(DcMotor.class, "l");
 
+        colorSensor = hwMap.colorSensor.get("color_sensor");
+
+
         leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotor.Direction.REVERSE);
         rightBackWheel.setDirection(DcMotor.Direction.REVERSE);
@@ -96,7 +100,9 @@ public class Hardware
         rightBackWheel.setPower(0);
         l.setPower(0);
 
-                // Set all motors to run without encoders.
+
+
+        // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
         leftFrontWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBackWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
