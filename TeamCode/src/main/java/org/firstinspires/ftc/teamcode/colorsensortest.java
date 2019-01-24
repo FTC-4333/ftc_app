@@ -61,7 +61,7 @@ public class colorsensortest extends LinearOpMode
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        if  (robot.colorSensor.red() >= robot.colorSensor.green() && robot.colorSensor.blue() < 30)
+        if  (robot.colorSensor.red()*255 >= robot.colorSensor.green()*255 && robot.colorSensor.blue()*255 < 30)
         {
             runtime.reset();
             while (opModeIsActive() && (runtime.seconds() < 2))

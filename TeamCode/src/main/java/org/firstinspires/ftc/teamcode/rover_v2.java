@@ -16,10 +16,12 @@ public class rover_v2 extends OpMode
 {
     private static final double TRIGGERTHRESHOLD = .2     ;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
-    private static final double SCALEDPOWER = 1; //Emphasis on current controller reading (vs current motor power) on the drive train
+    private static final double SCALEDPOWER = 0.7; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel, arm0, arm1, l;
     private static Servo leftCollector, rightCollector;
+
+    ColorSensor c;
 
     @Override
     public void init()
@@ -33,7 +35,7 @@ public class rover_v2 extends OpMode
        // arm0   = hardwareMap.dcMotor.get(UniversalConstants.ARM0);
        // arm1   = hardwareMap.dcMotor.get(UniversalConstants.ARM1);
         l = hardwareMap.dcMotor.get(UniversalConstants.LIFTER);
-     //   c = hardwareMap.colorSensor.get(UniversalConstants.COLORSENSOR);
+        c = hardwareMap.colorSensor.get(UniversalConstants.COLORSENSOR);
 
        // leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
        // rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
@@ -91,9 +93,10 @@ public class rover_v2 extends OpMode
             l.setPower(0);
         }
 
-      //  telemetry.addData("Red",  colorSensor.red() );
-      //  telemetry.addData("Blue", colorSensor.blue() );
-      //  telemetry.addData("Blue", colorSensor.green() );
+        telemetry.addData("Red",  c.red() / 0.003921);
+        telemetry.addData("Green", c.green() / 0.003921 );
+        telemetry.addData("Blue", c.blue() / 0.003921);
+
 
 
         //control arm using left and right stick y values
