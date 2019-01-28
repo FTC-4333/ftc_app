@@ -86,7 +86,7 @@ public class Hardware
         rightBackWheel      = hwMap.get(DcMotor.class, "r2");
         l              = hwMap.get(DcMotor.class, "l");
 
-        colorSensor = hwMap.colorSensor.get("color_sensor");
+        colorSensor = hwMap.colorSensor.get("c");
 
 
         leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);

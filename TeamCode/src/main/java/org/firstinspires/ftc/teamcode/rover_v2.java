@@ -93,9 +93,9 @@ public class rover_v2 extends OpMode
             l.setPower(0);
         }
 
-        telemetry.addData("Red",  c.red() / 0.003921);
-        telemetry.addData("Green", c.green() / 0.003921 );
-        telemetry.addData("Blue", c.blue() / 0.003921);
+        telemetry.addData("Red",  c.red());
+        telemetry.addData("Green", c.green() );
+        telemetry.addData("Blue", c.blue());
 
 
 
