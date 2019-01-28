@@ -41,9 +41,6 @@ public class colorsensortest extends LinearOpMode
     Hardware         robot   = new Hardware();
     private ElapsedTime     runtime = new ElapsedTime();
 
-    static final double     FORWARD = 0.5;
-    static final double     REVERSE = -0.5;
-
     @Override
     public void runOpMode()
     {
@@ -61,10 +58,10 @@ public class colorsensortest extends LinearOpMode
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        if  (robot.colorSensor.red()*255 >= robot.colorSensor.green()*255 && robot.colorSensor.blue()*255 < 400)
+        if  (robot.colorSensor.red() >= robot.colorSensor.green() && robot.colorSensor.blue() < 400)
         {
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 2))
+            while (opModeIsActive() && (runtime.seconds() < 0.5))
             {
 
                 robot.leftFrontWheel.setPower(-1);
