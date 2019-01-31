@@ -61,23 +61,27 @@ public class colorsensortest extends LinearOpMode
         if  (robot.colorSensor.red() >= robot.colorSensor.green() && robot.colorSensor.blue() < 400)
         {
             runtime.reset();
-            while (opModeIsActive() && (runtime.seconds() < 0.5))
+            while (opModeIsActive() && (runtime.seconds() < 0.2))
             {
-
-                robot.leftFrontWheel.setPower(-1);
-                robot.leftBackWheel.setPower(-1);
+                robot.leftFrontWheel.setPower(1);
+                robot.leftBackWheel.setPower(1);
                 robot.rightFrontWheel.setPower(1);
-                robot.rightBackWheel.setPower(-1);
+                robot.rightBackWheel.setPower(1);
             }
         }
 
-        else
+        else //strafe right
         {
-            robot.leftFrontWheel.setPower(0);
-            robot.leftBackWheel.setPower(0);
-            robot.rightFrontWheel.setPower(0);
-            robot.rightBackWheel.setPower(0);
+            runtime.reset();
+            while (opModeIsActive() && (runtime.seconds() < 0.2))
+            {
+                robot.leftFrontWheel.setPower(1);
+                robot.leftBackWheel.setPower(-1);
+                robot.rightFrontWheel.setPower(-1);
+                robot.rightBackWheel.setPower(1);
+            }
         }
+
 
 
          telemetry.addData("Path", "Complete");

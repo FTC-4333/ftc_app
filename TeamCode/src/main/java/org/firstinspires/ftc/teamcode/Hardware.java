@@ -89,9 +89,9 @@ public class Hardware
         colorSensor = hwMap.colorSensor.get("c");
 
 
-        leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);
+       // leftFrontWheel.setDirection(DcMotor.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotor.Direction.REVERSE);
-        rightBackWheel.setDirection(DcMotor.Direction.REVERSE);
+       // rightBackWheel.setDirection(DcMotor.Direction.REVERSE);
 
         // Set all motors to zero power
         leftFrontWheel.setPower(0);
