@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //--------------------------------------------------------------------------------------------------
 
-@Autonomous(name="autorover_crater", group="Autonomous")
-public class autorover_crater extends LinearOpMode
+@Autonomous(name="autorover_depot", group="Autonomous")
+public class autorover_depot extends LinearOpMode
 {
     //l1 = left front wheel
     //l2 = left back wheel
@@ -28,11 +28,11 @@ public class autorover_crater extends LinearOpMode
 
     DcMotor l;
 
- // DcMotor a1;
- // DcMotor a2;
+    // DcMotor a1;
+    // DcMotor a2;
 
- // Servo lc;
- // Servo rc;
+    // Servo lc;
+    // Servo rc;
 
     ColorSensor c;
 
@@ -46,8 +46,8 @@ public class autorover_crater extends LinearOpMode
         r1 = hardwareMap.dcMotor.get("r1");
         r2 = hardwareMap.dcMotor.get("r2");
 
-      //lc = hardwareMap.dcMotor.get("lc");
-      //rc = hardwareMap.dcMotor.get("rc");
+        //lc = hardwareMap.dcMotor.get("lc");
+        //rc = hardwareMap.dcMotor.get("rc");
 
         l2.setDirection(DcMotor.Direction.REVERSE);
 
@@ -70,7 +70,6 @@ public class autorover_crater extends LinearOpMode
         //if rightmost mineral is gold, push
         //if rightmost mineral is not gold, strafe left to leftmost mineral
         //push because we know that it is gold
-        //drive into crater
         //lift arm out of center of bot
 
         //descend from lander for 7 seconds
@@ -124,7 +123,7 @@ public class autorover_crater extends LinearOpMode
             strafe_right(1);
             sleep(800);
             strafe_right(0);
-            
+
             sleep(1000);
 
             forward(1);
