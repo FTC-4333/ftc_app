@@ -38,49 +38,80 @@ public class autorover_crater extends LinearOpMode
 
         waitForStart();
 
+        //intended path:
+        //descend from lander
+        //unhook
+        //drive forwards to center mineral for sampling
+        //get color reading
+        //if center mineral is gold, push
+        //if center mineral is not gold, strafe right to rightmost mineral
+        //get color reading
+        //if rightmost mineral is gold, push
+        //if rightmost mineral is not gold, strafe left to leftmost mineral
+        //push because we know that it is gold
+
         //descend from lander for 7 seconds
-        l.setPower(0.7);
-
+        lifter_down(1);
         sleep(7000);
-
-        l.setPower(0);
-
-        forward(1);
+        lifter_down(0);
 
         //strafe right for 0.1 seconds to clear hook from lander
         strafe_right(1);
         sleep(100);
+        strafe_right(0);
 
         //drive to center mineral
+        forward(1);
+        sleep(400);
+        forward(0);
 
+        //sleep for 2 seconds to get color reading
+        sleep(2000);
 
         //if center mineral is gold, drive forwards to push it
         if  (c.red() >= c.green() && c.blue() < 400)
         {
-            l1.setPower(1);
-            l2.setPower(1);
-            r1.setPower(1);
-            r2.setPower(1);
-
-            sleep(500);
-
-            l1.setPower(0);
-            l2.setPower(0);
-            r1.setPower(0);
-            r2.setPower(0);
+            forward(1);
+            sleep(200);
+            forward(0);
         }
 
         //if center mineral is not gold, strafe right to rightmost mineral
         else
         {
-            l1.setPower(1);
-            l2.setPower(-1);
-            r1.setPower(-1);
-            r2.setPower(1);
+            strafe_right(1);
+            sleep(400);
+            strafe_right(0);
+        }
+
+        //sleep for 2 seconds to get color reading
+        sleep(2000);
+
+        //if rightmost mineral is gold, drive forwards to push it
+        if  (c.red() >= c.green() && c.blue() < 400)
+        {
+            forward(1);
+            sleep(200);
+            forward(0);
+        }
+
+        //if rightmost mineral is not gold, strafe left to leftmost mineral, and push it since we know that it is gold
+        else
+        {
+            strafe_right(1);
+            sleep(800);
+            strafe_right(0);
+            
+            sleep(1000);
+
+            forward(1);
+            sleep(200);
+            forward(0);
         }
 
 //--------------------------------------------------------------------------------------------------
 
+        //set all motors to 0 power when path is done
         l1.setPower(0);
         l2.setPower(0);
         r1.setPower(0);
@@ -101,7 +132,7 @@ public class autorover_crater extends LinearOpMode
     }
 
     //drive backwards method
-    public void backwards (double power)
+    public void backward (double power)
     {
         l1.setPower(-power);
         l2.setPower(-power);
@@ -128,7 +159,7 @@ public class autorover_crater extends LinearOpMode
     }
 
     //lifter up method
-    public void lift_up (double power)
+    public void lifter_up (double power)
     {
         l.setPower(power);
     }
