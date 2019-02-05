@@ -48,8 +48,8 @@ public class autorover_test extends LinearOpMode
 
         l = hardwareMap.dcMotor.get("l");
 
-        //lc = hardwareMap.dcMotor.get("lc");
-        //rc = hardwareMap.dcMotor.get("rc");
+        //lc = hardwareMap.servo.get("lc");
+        //rc = hardwareMap.servo.get("rc");
 
         c = hardwareMap.colorSensor.get("c");
 
@@ -57,32 +57,29 @@ public class autorover_test extends LinearOpMode
 
         waitForStart();
 
-        l1.setPower(1);
-        sleep(1000);
-        l1.setPower(0);
+        forward(0.5);
+        sleep(1500);
+        forward(0);
 
-        l2.setPower(1);
-        sleep(1000);
-        l2.setPower(0);
+        sleep(4000);
 
-        r1.setPower(1);
-        sleep(1000);
-        r1.setPower(0);
+        backward(0.5);
+        sleep(1500);
+        backward(0);
 
-        r2.setPower(1);
-        sleep(1000);
-        r2.setPower(0);
+        sleep(4000);
 
 
-//--------------------------------------------------------------------------------------------------
+        strafe_right(0.5);
+        sleep(1500);
+        strafe_right(0);
 
-        //set all motors to 0 power when path is done
-        l1.setPower(0);
-        l2.setPower(0);
-        r1.setPower(0);
-        r2.setPower(0);
-        l.setPower(0);
+        sleep(4000);
 
+
+        strafe_left(0.5);
+        sleep(1500);
+        strafe_left(0);
     }
 //--------------------------------------------------------------------------------------------------
     //methods
