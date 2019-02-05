@@ -81,17 +81,24 @@ public class rover_v2 extends OpMode
         {
             l.setPower(-1);
         }
+        else
+        {
+            l.setPower(0);
+        }
+
 
 
         if (gamepad1.a)
         {
             l.setPower(1);
         }
-
-        if (gamepad1.b)
+        else
         {
             l.setPower(0);
         }
+
+
+
 
         telemetry.addData("Red",  c.red());
         telemetry.addData("Green", c.green() );

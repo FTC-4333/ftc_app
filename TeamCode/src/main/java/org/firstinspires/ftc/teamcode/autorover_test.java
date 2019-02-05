@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //--------------------------------------------------------------------------------------------------
 
-@Autonomous(name="autorover_crater", group="Autonomous")
-public class autorover_crater extends LinearOpMode
+@Autonomous(name="autorover_test", group="Autonomous")
+public class autorover_test extends LinearOpMode
 {
     //l1 = left front wheel
     //l2 = left back wheel
@@ -28,11 +28,11 @@ public class autorover_crater extends LinearOpMode
 
     DcMotor l;
 
- // DcMotor a1;
- // DcMotor a2;
+    // DcMotor a1;
+    // DcMotor a2;
 
- // Servo lc;
- // Servo rc;
+    // Servo lc;
+    // Servo rc;
 
     ColorSensor c;
 
@@ -46,12 +46,10 @@ public class autorover_crater extends LinearOpMode
         r1 = hardwareMap.dcMotor.get("r1");
         r2 = hardwareMap.dcMotor.get("r2");
 
-      //lc = hardwareMap.Servo.get("lc");
-      //rc = hardwareMap.Servo.get("rc");
-
-        r1.setDirection(DcMotor.Direction.REVERSE);
-
         l = hardwareMap.dcMotor.get("l");
+
+        //lc = hardwareMap.dcMotor.get("lc");
+        //rc = hardwareMap.dcMotor.get("rc");
 
         c = hardwareMap.colorSensor.get("c");
 
@@ -59,78 +57,22 @@ public class autorover_crater extends LinearOpMode
 
         waitForStart();
 
-        //path
-        //descend from lander
-        //unhook
-        //drive forwards to center mineral for sampling
-        //get color reading
-        //if center mineral is gold, push
-        //if center mineral is not gold, strafe right to rightmost mineral
-        //get color reading
-        //if rightmost mineral is gold, push
-        //if rightmost mineral is not gold, strafe left to leftmost mineral
-        //push because we know that it is gold
-        //drive into crater
-        //lift arm out of center of bot
+        l1.setPower(1);
+        sleep(1000);
+        l1.setPower(0);
 
-        //descend from lander for 7 seconds
-        lifter_down(1);
-        sleep(7000);
-        lifter_down(0);
+        l2.setPower(1);
+        sleep(1000);
+        l2.setPower(0);
 
-        //strafe right for 0.1 seconds to clear hook from lander
-       // strafe_right(1);
-       // sleep(100);
-       // strafe_right(0);
+        r1.setPower(1);
+        sleep(1000);
+        r1.setPower(0);
 
-        //drive to forward 0.5 seconds to center mineral
-        forward(1);
-        sleep(700);
-        forward(0);
+        r2.setPower(1);
+        sleep(1000);
+        r2.setPower(0);
 
-        //sleep for 1.5 seconds to get color reading
-        sleep(1500);
-
-        //if center mineral is gold, drive forwards to push it
-        if  (c.red() >= c.green() && c.blue() < 400)
-        {
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
-
-        //if center mineral is not gold, strafe right to rightmost mineral
-        else
-        {
-            strafe_right(1);
-            sleep(400);
-            strafe_right(0);
-        }
-
-        //sleep for 2 seconds to get color reading
-        sleep(2000);
-
-        //if rightmost mineral is gold, drive forwards to push it
-        if  (c.red() >= c.green() && c.blue() < 400)
-        {
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
-
-        //if rightmost mineral is not gold, strafe left to leftmost mineral, and push it since we know that it is gold
-        else
-        {
-            strafe_right(1);
-            sleep(800);
-            strafe_right(0);
-            
-            sleep(1000);
-
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
 
 //--------------------------------------------------------------------------------------------------
 
@@ -168,7 +110,7 @@ public class autorover_crater extends LinearOpMode
     {
         l1.setPower(power);
         l2.setPower(-power);
-        r1.setPower(power);
+        r1.setPower(-power);
         r2.setPower(power);
     }
 
