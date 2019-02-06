@@ -79,11 +79,11 @@ public class autorover_crater extends LinearOpMode
         lifter_down(0);
 
         //strafe right for 0.1 seconds to clear hook from lander
-       // strafe_right(1);
-       // sleep(100);
-       // strafe_right(0);
+        strafe_right(1);
+        sleep(100);
+        strafe_right(0);
 
-        //drive to forward 0.5 seconds to center mineral
+        //drive to forward 0.7 seconds to center mineral
         forward(1);
         sleep(700);
         forward(0);

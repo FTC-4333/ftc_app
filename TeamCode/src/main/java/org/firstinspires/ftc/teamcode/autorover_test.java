@@ -57,29 +57,75 @@ public class autorover_test extends LinearOpMode
 
         waitForStart();
 
-        forward(0.5);
+        l1.setDirection(DcMotor.Direction.REVERSE);
+        l2.setDirection(DcMotor.Direction.REVERSE);
+        r1.setDirection(DcMotor.Direction.REVERSE);
+        r2.setDirection(DcMotor.Direction.REVERSE);
+
+        sleep(3000);
+
+        forward(1);
         sleep(1500);
         forward(0);
 
-        sleep(4000);
+        sleep(2000);
 
-        backward(0.5);
+        backward(1);
         sleep(1500);
         backward(0);
 
-        sleep(4000);
+        sleep(2000);
 
-
-        strafe_right(0.5);
+        strafe_right(1);
         sleep(1500);
         strafe_right(0);
 
-        sleep(4000);
+        sleep(2000);
 
-
-        strafe_left(0.5);
+        strafe_left(1);
         sleep(1500);
         strafe_left(0);
+
+        sleep(10000);
+        
+        if  (c.red() >= c.green() && c.blue() < 400)
+        {
+            forward(1);
+            sleep(200);
+            forward(0);
+        }
+
+        else
+        {
+            strafe_right(1);
+            sleep(400);
+            strafe_right(0);
+        }
+
+        //sleep for 2 seconds to get color reading
+        sleep(2000);
+
+        //if rightmost mineral is gold, drive forwards to push it
+        if  (c.red() >= c.green() && c.blue() < 400)
+        {
+            forward(1);
+            sleep(200);
+            forward(0);
+        }
+
+        //if rightmost mineral is not gold, strafe left to leftmost mineral, and push it since we know that it is gold
+        else
+        {
+            strafe_right(1);
+            sleep(800);
+            strafe_right(0);
+
+            sleep(1000);
+
+            forward(1);
+            sleep(200);
+            forward(0);
+        }
     }
 //--------------------------------------------------------------------------------------------------
     //methods

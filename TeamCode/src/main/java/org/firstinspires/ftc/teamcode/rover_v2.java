@@ -40,7 +40,7 @@ public class rover_v2 extends OpMode
        // leftCollector  = hardwareMap.servo.get(UniversalConstants.LEFTCOLLECTOR) ;
        // rightCollector = hardwareMap.servo.get(UniversalConstants.RIGHTCOLLECTOR);
 
-        //reverse all but rightFrontWheel, because of the way that the REV motors are oriented
+        //reverse all but rightFrontWheel, because of the way that the motors are oriented
         leftFrontWheel.setDirection(DcMotorSimple.Direction.REVERSE);
         leftBackWheel.setDirection(DcMotorSimple.Direction.REVERSE) ;
         rightBackWheel.setDirection(DcMotorSimple.Direction.REVERSE);
