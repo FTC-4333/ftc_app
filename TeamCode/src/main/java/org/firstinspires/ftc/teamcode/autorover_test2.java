@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //--------------------------------------------------------------------------------------------------
 
-@Autonomous(name="autorover_test", group="Autonomous")
-public class autorover_test extends LinearOpMode
+@Autonomous(name="autorover_test2", group="Autonomous")
+public class autorover_test2 extends LinearOpMode
 {
     //l1 = left front wheel
     //l2 = left back wheel
@@ -36,6 +36,14 @@ public class autorover_test extends LinearOpMode
 
     ColorSensor c;
 
+    static final double     COUNTS_PER_MOTOR_REV    = 288 ;    // eg: TETRIX Motor Encoder
+    static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
+    static final double     WHEEL_DIAMETER_INCHES   = 6.0 ;     // For figuring circumference
+    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
+            (WHEEL_DIAMETER_INCHES * 3.1415);
+    static final double     DRIVE_SPEED             = 0.6;
+    static final double     TURN_SPEED              = 0.5;
+
 //--------------------------------------------------------------------------------------------------
 
     @Override
@@ -56,76 +64,6 @@ public class autorover_test extends LinearOpMode
 //--------------------------------------------------------------------------------------------------
 
         waitForStart();
-
-        l1.setDirection(DcMotor.Direction.REVERSE);
-        l2.setDirection(DcMotor.Direction.REVERSE);
-        r1.setDirection(DcMotor.Direction.REVERSE);
-        r2.setDirection(DcMotor.Direction.REVERSE);
-
-        sleep(3000);
-
-        forward(1);
-        sleep(1500);
-        forward(0);
-
-        sleep(2000);
-
-        backward(1);
-        sleep(1500);
-        backward(0);
-
-        sleep(2000);
-
-        strafe_right(1);
-        sleep(1500);
-        strafe_right(0);
-
-        sleep(2000);
-
-        strafe_left(1);
-        sleep(1500);
-        strafe_left(0);
-
-        sleep(10000);
-
-        if  (c.red() >= c.green() && c.blue() < 400)
-        {
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
-
-        else
-        {
-            strafe_right(1);
-            sleep(400);
-            strafe_right(0);
-        }
-
-        //sleep for 2 seconds to get color reading
-        sleep(2000);
-
-        //if rightmost mineral is gold, drive forwards to push it
-        if  (c.red() >= c.green() && c.blue() < 400)
-        {
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
-
-        //if rightmost mineral is not gold, strafe left to leftmost mineral, and push it since we know that it is gold
-        else
-        {
-            strafe_right(1);
-            sleep(800);
-            strafe_right(0);
-
-            sleep(1000);
-
-            forward(1);
-            sleep(200);
-            forward(0);
-        }
 
 
     }
