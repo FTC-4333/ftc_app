@@ -197,7 +197,7 @@ public class autorover_crater extends LinearOpMode
     public void arm_release (double power)
     {
     //    a1.setPower(0.7);
-    //    a2.setPower(0.7);
+    //     a2.setPower(0.7);
     }
 //--------------------------------------------------------------------------------------------------
 

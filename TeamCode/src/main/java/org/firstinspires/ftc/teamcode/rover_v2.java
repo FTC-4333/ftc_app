@@ -16,7 +16,7 @@ public class rover_v2 extends OpMode
 {
     private static final double TRIGGERTHRESHOLD = .2     ;
     private static final double ACCEPTINPUTTHRESHOLD = .15;
-    private static final double SCALEDPOWER = 0.7; //Emphasis on current controller reading (vs current motor power) on the drive train
+    private static final double SCALEDPOWER = 1; //Emphasis on current controller reading (vs current motor power) on the drive train
 
     private static DcMotor leftFrontWheel, leftBackWheel, rightFrontWheel, rightBackWheel, arm0, arm1, l;
     private static Servo leftCollector, rightCollector;
@@ -77,28 +77,9 @@ public class rover_v2 extends OpMode
             rightCollector.setPosition(0.5);
         }
         */
-        if (gamepad1.y)
-        {
-            l.setPower(-1);
-        }
-        else
-        {
-            l.setPower(0);
-        }
 
-
-
-        if (gamepad1.a)
-        {
-            l.setPower(1);
-        }
-        else
-        {
-            l.setPower(0);
-        }
-
-
-
+        l.setPower(gamepad1.right_trigger);
+        l.setPower(gamepad1.left_trigger);
 
         telemetry.addData("Red",  c.red());
         telemetry.addData("Green", c.green() );

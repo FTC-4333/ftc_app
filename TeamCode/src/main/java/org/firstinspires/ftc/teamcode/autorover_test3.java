@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 //--------------------------------------------------------------------------------------------------
 
-@Autonomous(name="autorover_test", group="Autonomous")
-public class autorover_test extends LinearOpMode
+@Autonomous(name="autorover_test3", group="Autonomous")
+public class autorover_test3 extends LinearOpMode
 {
     //l1 = left front wheel
     //l2 = left back wheel
@@ -57,12 +57,15 @@ public class autorover_test extends LinearOpMode
 
         waitForStart();
 
-      //  l1.setDirection(DcMotor.Direction.REVERSE);
-      //  l2.setDirection(DcMotor.Direction.REVERSE);
-      //  r1.setDirection(DcMotor.Direction.REVERSE);
-      //  r2.setDirection(DcMotor.Direction.REVERSE);
+        l.setPower(1);
+        sleep(3000);
+        l.setPower(0);
 
-        
+        sleep(3000);
+
+        l.setPower(-1);
+        sleep(3000);
+        l.setPower(0);
 
     }
 //--------------------------------------------------------------------------------------------------
